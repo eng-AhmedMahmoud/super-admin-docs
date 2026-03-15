@@ -14,6 +14,8 @@ const sections = [
   { id: "journey", label: "My Journey" },
   { id: "features", label: "Features Deep Dive" },
   { id: "security", label: "Security & Governance" },
+  { id: "quality", label: "Performance & Quality" },
+  { id: "demo", label: "Demo & Testing" },
   { id: "next-steps", label: "Next Steps" },
   { id: "api-reference", label: "API Reference" },
 ];
@@ -741,6 +743,38 @@ export default function DocsPage() {
                   </li>
                 </ul>
               </div>
+
+              {/* Phase 6 */}
+              <div className="relative pl-8 border-l-2 border-brand-100">
+                <div className="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-950" />
+                <h4 className="font-semibold text-neutral-950 text-lg mb-2">Phase 6: Performance &amp; Quality Engineering</h4>
+                <ul className="space-y-2 text-neutral-600 text-sm leading-relaxed">
+                  <li className="flex gap-2">
+                    <span className="text-brand-950 mt-0.5">&#8226;</span>
+                    Ran Lighthouse audits against the production build
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-brand-950 mt-0.5">&#8226;</span>
+                    Fixed 14 lint errors across mock data files and React hooks
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-brand-950 mt-0.5">&#8226;</span>
+                    Resolved all WCAG AA contrast failures with systematic color audit
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-brand-950 mt-0.5">&#8226;</span>
+                    Implemented code splitting with dynamic imports for chart-heavy pages
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-brand-950 mt-0.5">&#8226;</span>
+                    Added font preloading and route-level loading skeletons
+                  </li>
+                  <li className="flex gap-2">
+                    <span className="text-brand-950 mt-0.5">&#8226;</span>
+                    Achieved zero-error builds across lint, type-check, and production build
+                  </li>
+                </ul>
+              </div>
             </div>
 
             <div className="mt-10 bg-brand-100 rounded-2xl p-6 max-w-3xl">
@@ -900,6 +934,156 @@ export default function DocsPage() {
                 <p className="text-sm text-neutral-600">
                   Tenant operational financials are hidden by default. Access to sensitive
                   tenant data requires explicit break-glass authorization.
+                </p>
+              </div>
+            </div>
+          </section>
+
+          {/* ===== PERFORMANCE & QUALITY ===== */}
+          <section id="quality" className="mb-20">
+            <SectionHeading>Performance &amp; Quality</SectionHeading>
+
+            <p className="mt-6 text-neutral-700 leading-relaxed max-w-3xl mb-8">
+              The Super Admin went through a systematic Lighthouse optimization process, starting from
+              a baseline of Performance 54 and Accessibility 89, and applying targeted fixes across both categories.
+            </p>
+
+            <div className="space-y-8 max-w-3xl">
+              {/* Accessibility */}
+              <div className="border border-neutral-100 rounded-2xl p-6">
+                <h3 className="text-lg font-semibold text-neutral-950 mb-4 flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-success-100 text-success-600 text-xs font-bold flex items-center justify-center">A</span>
+                  Accessibility (targeting 100)
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    "Fixed WCAG AA contrast ratios across all Badge tones (success, warning, danger, brand)",
+                    "Introduced --color-brand-text (#1a5bb5, 4.7:1 ratio) for interactive text on white backgrounds",
+                    "Fixed heading hierarchy — ensured h1 → h2 sequential order across all feature pages",
+                    "Darkened status indicator colors in StatCard trends (success-800, danger-800)",
+                  ].map((item, i) => (
+                    <div key={i} className="flex gap-3 items-start">
+                      <div className="w-1.5 h-1.5 rounded-full bg-success-600 mt-2 shrink-0" />
+                      <p className="text-sm text-neutral-700">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Performance */}
+              <div className="border border-neutral-100 rounded-2xl p-6">
+                <h3 className="text-lg font-semibold text-neutral-950 mb-4 flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-brand-100 text-brand-950 text-xs font-bold flex items-center justify-center">P</span>
+                  Performance Optimization
+                </h3>
+                <div className="space-y-3">
+                  {[
+                    "Dynamic imports with next/dynamic and ssr: false for Recharts components — prevents 1.3MB chart library from blocking initial render",
+                    "Font preloading — <link rel=\"preload\"> for Satoshi Medium and Regular woff2 files",
+                    "optimizePackageImports in next.config.ts for recharts, react-icons, clsx tree-shaking",
+                    "Route-level loading skeletons (loading.tsx) for instant visual feedback",
+                    "Reduced mock API delays from 200ms to 50ms",
+                    "Production console removal via Next.js compiler",
+                  ].map((item, i) => (
+                    <div key={i} className="flex gap-3 items-start">
+                      <div className="w-1.5 h-1.5 rounded-full bg-brand-950 mt-2 shrink-0" />
+                      <p className="text-sm text-neutral-700">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Quality Gates */}
+              <div className="border border-neutral-100 rounded-2xl p-6">
+                <h3 className="text-lg font-semibold text-neutral-950 mb-4 flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-warning-100 text-warning-600 text-xs font-bold flex items-center justify-center">Q</span>
+                  Quality Gates
+                </h3>
+                <div className="grid gap-4 sm:grid-cols-2">
+                  {[
+                    { label: "ESLint", value: "Zero lint errors" },
+                    { label: "TypeScript", value: "Zero type errors (strict mode)" },
+                    { label: "Build", value: "Clean builds across all 18 routes" },
+                    { label: "CI Pipeline", value: "lint → type-check → build" },
+                  ].map((gate) => (
+                    <div key={gate.label} className="flex gap-3 items-center">
+                      <div className="w-2 h-2 rounded-full bg-success-600 shrink-0" />
+                      <div>
+                        <span className="font-medium text-neutral-950 text-sm">{gate.label}:</span>{" "}
+                        <span className="text-sm text-neutral-600">{gate.value}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* ===== DEMO & TESTING ===== */}
+          <section id="demo" className="mb-20">
+            <SectionHeading>Demo &amp; Testing</SectionHeading>
+
+            <p className="mt-6 text-neutral-700 leading-relaxed max-w-3xl mb-8">
+              The Super Admin uses mock data and can be fully tested locally. All features are functional
+              with an in-memory mock API layer — no backend required.
+            </p>
+
+            <div className="space-y-8 max-w-3xl">
+              {/* Credentials */}
+              <div className="border border-neutral-100 rounded-2xl p-6">
+                <h3 className="text-lg font-semibold text-neutral-950 mb-4">Demo Credentials</h3>
+                <div className="bg-neutral-950 rounded-xl p-5 font-mono text-sm space-y-2">
+                  <div className="flex gap-2">
+                    <span className="text-neutral-500">Email:</span>
+                    <span className="text-green-400">admin@yosemitecrew.com</span>
+                  </div>
+                  <div className="flex gap-2">
+                    <span className="text-neutral-500">Password:</span>
+                    <span className="text-green-400">Admin@123</span>
+                  </div>
+                  <div className="flex gap-2">
+                    <span className="text-neutral-500">MFA Code:</span>
+                    <span className="text-green-400">Any 6-digit code (e.g., 123456)</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Login Flow */}
+              <div className="border border-neutral-100 rounded-2xl p-6">
+                <h3 className="text-lg font-semibold text-neutral-950 mb-4">Login Flow</h3>
+                <div className="space-y-3">
+                  {[
+                    "Navigate to /login",
+                    "Enter email and password",
+                    "Enter any 6-digit MFA code",
+                    "You'll land on the dashboard with all features accessible from the sidebar",
+                  ].map((step, i) => (
+                    <div key={i} className="flex gap-3 items-start">
+                      <span className="text-xs font-bold text-neutral-500 bg-neutral-50 w-5 h-5 rounded flex items-center justify-center shrink-0 mt-0.5">
+                        {i + 1}
+                      </span>
+                      <p className="text-sm text-neutral-700">{step}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Setup */}
+              <div className="border border-neutral-100 rounded-2xl p-6">
+                <h3 className="text-lg font-semibold text-neutral-950 mb-4">Local Setup</h3>
+                <CodeBlock>{`git clone <repo-url>
+cd SuperAdmin
+pnpm install
+pnpm dev
+# Open http://localhost:3000`}</CodeBlock>
+              </div>
+
+              {/* Note */}
+              <div className="bg-brand-100 rounded-2xl p-6">
+                <h4 className="font-semibold text-brand-950 mb-2">About Mock Data</h4>
+                <p className="text-sm text-neutral-700 leading-relaxed">
+                  All data is mock data served from an in-memory mock API layer. Status changes,
+                  assignments, and other actions persist during the session but reset on reload.
                 </p>
               </div>
             </div>

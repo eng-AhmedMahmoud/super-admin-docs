@@ -5,6 +5,9 @@ export const metadata: Metadata = {
   title: "Super Admin — Project Documentation",
   description:
     "Technical documentation for the Yosemite Crew Super Admin Dashboard",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({
